@@ -1,11 +1,12 @@
+const { ROLE } = require('../../helpers/constant');
 const CheckRoleView = server => {
     return {
         method: (request, reply) => {
 
-            if (request.auth.credentials.user.role === "superadmin" ||
-                request.auth.credentials.user.role === "dinkesprov" ||
-                request.auth.credentials.user.role === "faskes" ||
-                request.auth.credentials.user.role === "dinkeskota") {
+            if (request.auth.credentials.user.role === ROLE.ADMIN ||
+                request.auth.credentials.user.role === ROLE.PROV ||
+                request.auth.credentials.user.role === ROLE.FASKES ||
+                request.auth.credentials.user.role === ROLE.KOTAKAB) {
                 return reply(request.auth.credentials.user.role)
             } else {
                 return reply({
@@ -24,9 +25,9 @@ const CheckRoleCreate = server => {
     return {
         method: (request, reply) => {
 
-            if (request.auth.credentials.user.role === "superadmin" ||
-                request.auth.credentials.user.role === "faskes" ||
-                request.auth.credentials.user.role === "dinkeskota") {
+            if (request.auth.credentials.user.role === ROLE.ADMIN ||
+                request.auth.credentials.user.role === ROLE.FASKES ||
+                request.auth.credentials.user.role === ROLE.KOTAKAB) {
                 return reply(request.auth.credentials.user.role)
             } else {
                 return reply({
@@ -45,9 +46,9 @@ const CheckRoleUpdate = server => {
     return {
         method: (request, reply) => {
 
-            if (request.auth.credentials.user.role === "superadmin" ||
-                request.auth.credentials.user.role === "dinkeskota" ||
-                request.auth.credentials.user.role === "faskes") {
+            if (request.auth.credentials.user.role === ROLE.ADMIN ||
+                request.auth.credentials.user.role === ROLE.KOTAKAB ||
+                request.auth.credentials.user.role === ROLE.FASKES) {
                 return reply(request.auth.credentials.user.role)
             } else {
                 return reply({
@@ -65,9 +66,9 @@ const CheckRoleUpdate = server => {
 const CheckRoleDelete = server => {
     return {
         method: (request, reply) => {
-            if (request.auth.credentials.user.role === "superadmin" ||
-                request.auth.credentials.user.role === "dinkeskota" ||
-                request.auth.credentials.user.role === "faskes") {
+            if (request.auth.credentials.user.role === ROLE.ADMIN ||
+                request.auth.credentials.user.role === ROLE.KOTAKAB ||
+                request.auth.credentials.user.role === ROLE.FASKES) {
                 return reply(request.auth.credentials.user.role)
             } else {
                 return reply({
